@@ -4,17 +4,10 @@ interface ModalProps {
   onClose: () => void;
 }
 
-export const Modal = ({ children, isOpen, onClose }: ModalProps) => {
-  if (!isOpen) return null;
-
+export const Modal = ({ children }: ModalProps) => {
   return (
-    <div className="modal h-[200] w-[180] bg-zinc-300 rounded-sm">
-      <div className="modal-content">
-        <button className="close" onClick={onClose}>
-          X
-        </button>
-        {children}
-      </div>
+    <div className="modal h-[180] w-[180] bg-white shadow-xl rounded-sm py-[30] px-[5]">
+      <div className="modal-content">{children}</div>
     </div>
   );
 };

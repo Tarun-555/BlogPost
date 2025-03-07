@@ -21,8 +21,13 @@ const Navbar = async () => {
         />
       </Link>
       {session && session.user ? (
-        <div>
-          <Profile userImg={session.user.image} />
+        <div className="flex items-center gap-10">
+          <Link href={"/create-post"}>
+            <button className="bg-amber-700 px-3.5 py-2.5 rounded-sm text-xs font-semibold uppercase cursor-pointer hover:bg-amber-600">
+              Create Post
+            </button>
+          </Link>
+          <Profile user={session?.user} />
         </div>
       ) : (
         <div>
