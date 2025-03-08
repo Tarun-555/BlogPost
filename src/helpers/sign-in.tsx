@@ -1,4 +1,5 @@
-import { signIn } from "../../../auth";
+import Button from "@/components/Button";
+import { signIn } from "../../auth";
 
 export const LogIn = async () => {
   const handleLogin = async () => {
@@ -6,9 +7,10 @@ export const LogIn = async () => {
     console.log("Logging in");
     await signIn("github");
   };
+
   return (
     <form action={handleLogin}>
-      <button>Login</button>
+      <Button cls={"cursor-pointer"}>Login</Button>
     </form>
   );
 };
