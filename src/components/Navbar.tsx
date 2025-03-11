@@ -11,7 +11,10 @@ const Navbar = async () => {
   console.log("user", session);
 
   return (
-    <div className="w-full h-20 bg-gray-800 text-white flex items-center justify-between px-5 py-1">
+    <div
+      className="w-full h-20 bg-gray-800 text-white flex items-center justify-between px-5 py-1"
+      data-cy="navbar"
+    >
       <Link href={"/"}>
         <Image
           src="https://media.gettyimages.com/id/1296839661/vector/b-letter-logo.jpg?s=1024x1024&w=gi&k=20&c=GHpeh8Py9RafysyS-RNQd_y1Hvn53qmc2DpLdIrfNFY="

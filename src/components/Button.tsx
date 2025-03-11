@@ -5,13 +5,19 @@ interface ButtonProps {
   onClick?: () => void;
   children: React.ReactNode;
   cls: string;
+  dataCy?: string; // data-cy attribute for cypress tests
 }
 
-const Button = ({ onClick, children, cls }: ButtonProps) => {
+const Button = ({ onClick, children, cls, dataCy }: ButtonProps) => {
   const { pending } = useFormStatus();
 
   return (
-    <button disabled={pending} onClick={onClick} className={cls}>
+    <button
+      disabled={pending}
+      onClick={onClick}
+      className={cls}
+      data-cy={dataCy ? dataCy : ""}
+    >
       {children}
     </button>
   );

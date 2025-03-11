@@ -10,7 +10,9 @@ export const LogIn = async () => {
 
   return (
     <form action={handleLogin}>
-      <Button cls={"cursor-pointer"}>Login</Button>
+      <Button cls={"cursor-pointer"} dataCy={"login"}>
+        Login
+      </Button>
     </form>
   );
 };
