@@ -6,10 +6,9 @@ const CreatePost = () => {
   return (
     <div>
       <Navbar />
-      <div className="banner">
+      <div className="banner !h-[180px]">
         <div className="custom-header">Create Post</div>
       </div>
-
       <PostForm />
     </div>
   );
