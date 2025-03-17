@@ -1,5 +1,7 @@
 const getAllPostsQuery = `Select * from posts`;
 
-const createPostQuery = `INSERT INTO posts (title, content, imageUrl, likes, comments, createdBy) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`;
+const createPostQuery = `INSERT INTO posts (title, description, imageUrl, content, likes, comments, createdBy, createdAt) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`;
 
-export { getAllPostsQuery, createPostQuery };
+const getPostByIdQuery = `Select * from posts where posts.id=$1`;
+
+export { getAllPostsQuery, createPostQuery, getPostByIdQuery };

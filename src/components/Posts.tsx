@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 // const posts = [
 //   {
@@ -24,12 +25,12 @@ const fallBackImg =
 interface Post {
   id: number;
   title: string;
+  description: string;
   content: string;
   imageurl: string;
-  createdAt: string;
+  createdAt: Date;
   createdBy: {
-    userId: number;
-    name: string;
+    author: string;
   };
   likes: number;
   comments: number;
@@ -40,14 +41,17 @@ interface PostsProps {
 }
 
 const Posts = ({ posts }: PostsProps) => {
+  const router = useRouter();
+
   console.log("inside posts", posts);
   return (
-    <div className="flex gap-10 flex-wrap justify-items-start px-[60px] mt-8">
+    <div className="flex gap-10 flex-wrap justify-items-start px-[60px] mt-4">
       {posts?.length > 0 &&
         posts.map((post) => (
           <div
             key={post.id}
-            className="post w-2xs sm:w-2xs md:w-2xs lg:w-2xs border-4 border-[#312f2f] rounded-[10px] shadow-[0px_4px_0px_1px_#312f2f] overflow-hidden"
+            className="post w-2xs h-[380px] sm:w-2xs md:w-2xs lg:w-2xs border-4 border-[#312f2f] rounded-[10px] shadow-[0px_4px_0px_1px_#312f2f] overflow-hidden hover:border-[#ff8736] hover:shadow-[0px_4px_0px_1px_#ff8736] cursor-pointer"
+            onClick={() => router.push(`/post/${post.id}`)}
           >
             <div className="post-image w-full h-[200px]">
               <Image
@@ -66,11 +70,19 @@ const Posts = ({ posts }: PostsProps) => {
                 }}
               />
             </div>
-            <div className="post-content px-2.5 py-2">
+            <div className="post-content px-2.5 py-2 flex flex-col gap-1.5">
               <div className="post-title text-[20px] font-bold">
                 {post.title}
               </div>
-              <div className="post-body text-[18px]">{post.content}</div>
+              <div className="post-description text-[15px]">
+                {post.description}
+              </div>
+              <button
+                className="w-[100px] bg-black text-white text-[12px] font-bold p-1 rounded-[5px] cursor-pointer hover:bg-amber-600"
+                onClick={() => router.push(`/post/${post.id}`)}
+              >
+                Read more
+              </button>
               <div className="post-footer">
                 <div className="post-likes text-[13px] flex gap-0.5">
                   <span>{post.likes}</span>

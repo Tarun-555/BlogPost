@@ -1,4 +1,3 @@
-import Navbar from "@/components/Navbar";
 import Form from "next/form";
 import Search from "@/components/Search";
 import { getAllPosts } from "@/utils/actions/post";
@@ -28,9 +27,18 @@ const Home = async ({
 
   const posts = await getPosts();
 
+  const searchedPosts =
+    posts &&
+    posts.filter(
+      (post: { title: string; description: string }) =>
+        post.title?.toLowerCase().includes(query?.toLowerCase()) ||
+        post.description?.toLowerCase().includes(query?.toLowerCase())
+    );
+
+  console.log("searched posts", searchedPosts);
+
   return (
     <div>
-      <Navbar />
       <section className="banner">
         <div className="custom-header">
           Inspire, connect, and encourage engagement with posts
@@ -55,9 +63,9 @@ const Home = async ({
         ) : (
           <h2 className="posts-header">All posts</h2>
         )}
-        <ul className="posts-list px-2.5">
+        <ul className="posts-list px-2.5 pb-[30px]">
           <Suspense>
-            <Posts posts={posts} />
+            <Posts posts={query ? searchedPosts : posts} />
           </Suspense>
         </ul>
       </section>

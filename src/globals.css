@@ -5,12 +5,12 @@
   --foreground: #171717;
 }
 
-@theme inline {
+/* @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
+} */
 
 @layer utilities{
   .banner{
@@ -49,6 +49,32 @@
     font-size: 2rem;
     font-weight: bold;
     font-family: sans-serif;
+    padding: 4px 60px;
+    margin-top:8px;
+  }
+
+  .post-title{
+    font-family: var(--font-bebas_neue);
+    letter-spacing: 1.5px;
+  }
+
+  .post-container{
+    background: antiquewhite
+  }
+
+  .post-description{
+    font-family: var(--font-roboto);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+  }
+
+  .author-info{
+    background: #f0dcb7;
+    align-items: center;
+    padding: 4px 25px;
   }
 }
 

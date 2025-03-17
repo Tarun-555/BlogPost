@@ -3,25 +3,26 @@ import { Pool} from "pg";
 console.log("setting up DB config");
 
 const pool = new Pool({
-    connectionString: process.env.POSTGRES_URL
+    connectionString: process.env.POSTGRES_URL,
 });
 
 pool.connect()
     .then(() => console.log("Connected to Postgres"))
     .catch((err) => console.error("Error connecting to Postgres", err));
 
-pool.query(`
-    CREATE TABLE IF NOT EXISTS posts (
-      id SERIAL NOT NULL PRIMARY KEY,
-      title TEXT,
-      content TEXT,
-      imageUrl TEXT,
-      createdAt TIMESTAMP,
-      createdBy JSONB,
-      likes INTEGER,
-      comments INTEGER
-    )
-`);
+// pool.query(`
+//     CREATE TABLE IF NOT EXISTS posts (
+//       id SERIAL NOT NULL PRIMARY KEY,
+//       title TEXT,
+//       description TEXT,
+//       content TEXT,
+//       imageUrl TEXT,
+//       createdAt TIMESTAMP,
+//       createdBy JSONB,
+//       likes INTEGER,
+//       comments INTEGER
+//     )
+// `);
 
 
 //   id: 1,
