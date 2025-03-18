@@ -1,4 +1,5 @@
 import { Pool} from "pg";
+import { PostTable, UserTable } from "./initDBScript"
 
 console.log("setting up DB config");
 
@@ -7,9 +8,21 @@ const pool = new Pool({
 });
 
 pool.connect()
-    .then(() => console.log("Connected to Postgres"))
+    .then(() => {
+        console.log("Connected to Postgres: ", new Date());
+        createTables()
+    })
     .catch((err) => console.error("Error connecting to Postgres", err));
 
+
+const createTables = async() => {
+    try{
+      await pool.query(UserTable);
+      await pool.query(PostTable);
+    }catch(err){
+        console.log("error in creating tables", err);
+    }
+}
 // pool.query(`
 //     CREATE TABLE IF NOT EXISTS posts (
 //       id SERIAL NOT NULL PRIMARY KEY,

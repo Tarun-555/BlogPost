@@ -32,7 +32,7 @@ const createPost = async (
     content: val.content,
   });
 
-  // console.log(data, "---", validation.error);
+  console.log(data, "---", validation.error);
 
   try {
     if (validation.success) {
@@ -56,6 +56,12 @@ const createPost = async (
       });
       return {
         errors,
+        prevInputs: {
+          title: data.get("title") as string,
+          description: data.get("description") as string,
+          imageurl: data.get("imageurl") as string,
+          content: val.content,
+        },
       };
     }
   } catch (err) {
@@ -82,7 +88,6 @@ const getPostById = async (id: number) => {
   try {
     const post = await pool.query(getPostByIdQuery, [id]);
     console.log("Getting post by id:", id, post);
-
     return post.rows[0];
   } catch (err) {
     console.error(err);

@@ -10,6 +10,12 @@ export const PostForm = () => {
   const bindContentToCreatePost = createPost.bind(null, { content });
   const [state, formAction] = useActionState(bindContentToCreatePost, {
     errors: [],
+    prevInputs: {
+      title: "",
+      description: "",
+      content: "",
+      imageurl: "",
+    },
   });
 
   const handleContentChange = (value?: string) => {
@@ -30,6 +36,9 @@ export const PostForm = () => {
         <div className="flex flex-col sm:w-[calc(100%/2)] w-[80%]">
           <input
             type="text"
+            defaultValue={
+              state?.prevInputs?.title ? state?.prevInputs?.title : ""
+            }
             name="title"
             placeholder="Title"
             className=" px-4 py-2 rounded-2xl border-b-black border-2  relative bg-amber-50"
@@ -41,6 +50,9 @@ export const PostForm = () => {
         <div className="flex flex-col sm:w-[calc(100%/2)] w-[80%]">
           <input
             type="text"
+            defaultValue={
+              state?.prevInputs?.imageurl ? state?.prevInputs?.imageurl : ""
+            }
             name="imageurl"
             placeholder="Image URL"
             className="px-4 py-2 rounded-2xl border-b-black border-2  relative bg-amber-50"
@@ -52,7 +64,7 @@ export const PostForm = () => {
       </div>
       <div className="flex flex-col w-[80%]">
         <MdEditor
-          value={content}
+          value={state?.prevInputs.content ? state.prevInputs.content : content}
           textareaProps={{
             placeholder: "Here goes the content for your post...",
             style: {
@@ -73,6 +85,11 @@ export const PostForm = () => {
           <div className="flex flex-col">
             <textarea
               name="description"
+              defaultValue={
+                state?.prevInputs.description
+                  ? state.prevInputs.description
+                  : ""
+              }
               placeholder="short description"
               className="w-[100%] md:w-[300px] lg:w-[500px] h-[50px] px-4 py-2 rounded-2xl border-b-black border-2  relative bg-amber-50 "
             />

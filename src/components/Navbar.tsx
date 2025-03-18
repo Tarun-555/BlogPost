@@ -4,11 +4,22 @@ import { auth } from "../../auth";
 import Link from "next/link";
 import { Profile } from "./Profile";
 import Button from "./Button";
+import { getUserInfo, storeUserInfo } from "@/utils/actions/user";
+
+const storeUserInfoInDB = async (user) => {
+  const userExists = await getUserInfo(user.email);
+  // console.log("user Exists : ", userExists);
+  if (!userExists) {
+    await storeUserInfo(user);
+  }
+};
 
 const Navbar = async () => {
   const session = await auth();
 
-  console.log("user", session);
+  storeUserInfoInDB(session?.user);
+
+  // console.log("user", session, session?.user?.id);
 
   return (
     <div

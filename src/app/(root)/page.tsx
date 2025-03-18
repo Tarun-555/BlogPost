@@ -3,7 +3,7 @@ import Search from "@/components/Search";
 import { getAllPosts } from "@/utils/actions/post";
 import { Suspense } from "react";
 import Posts from "@/components/Posts";
-// import "./../../utils/db";
+import "./../../utils/db";
 
 // const getServersideProps = async () => {
 //   const posts = await getAllPosts().then((res) => console.log("Query", res));
