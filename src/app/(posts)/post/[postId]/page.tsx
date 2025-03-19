@@ -1,6 +1,7 @@
 import { bebas_neue, roboto } from "@/app/layout";
 import MarkdownPreview from "@/components/MarkdownPreview";
 import { getPostById } from "@/utils/actions/post";
+import { getAuthorByPostId } from "@/utils/actions/user";
 import Image from "next/image";
 // import MarkdowmPreview from "@uiw/react-markdown-preview";
 
@@ -10,7 +11,8 @@ const dummyAuthorImg =
 const PostDetailPage = async ({ params }: { params: { postId: number } }) => {
   const { postId } = params;
   const post = await getPostById(postId);
-  console.log("data from id", post);
+  const author = await getAuthorByPostId(post.created_by);
+  console.log("data from id", post, postId, params, author);
 
   return (
     <div>
@@ -20,7 +22,7 @@ const PostDetailPage = async ({ params }: { params: { postId: number } }) => {
             src={post.imageurl}
             width={500}
             height={100}
-            style={{ width: "98%", height: "450px", objectFit: "cover" }}
+            style={{ width: "98%", height: "450px", objectFit: "contain" }}
             alt="post-img"
           />
         </div>
@@ -41,12 +43,12 @@ const PostDetailPage = async ({ params }: { params: { postId: number } }) => {
               className="rounded-[50px]"
             />
             <div className="flex flex-col text-sm">
-              <span>{new Date(post.createdat).toLocaleDateString()}</span>
-              <span>{post.createdby.author}</span>
+              <span>{new Date(post.created_at).toLocaleDateString()}</span>
+              <span>{author.name}</span>
             </div>
           </div>
         </div>
-        <h3 className={`text-2xl px-8 ${roboto.className}`}>
+        <h3 className={`text-2xl px-8 mb-3 ${roboto.className}`}>
           {post.description}
         </h3>
         <div className="px-8 [&_wmde-markdown]:!bg-amber">

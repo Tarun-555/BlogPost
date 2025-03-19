@@ -8,6 +8,7 @@ import { pool } from "./../db";
 import { redirect } from "next/navigation";
 import { z, ZodIssue } from "zod";
 import { auth } from "../../../auth";
+import { getUserInfoByEmail } from "./user";
 
 const createPostSchema = z.object({
   title: z.string().min(5),
@@ -23,7 +24,8 @@ const createPost = async (
 ) => {
   const data = payload;
   const session = await auth();
-  console.log("Creating post", data, val);
+  const user = await getUserInfoByEmail(session?.user?.email as string);
+  console.log("Creating post", data, val, user);
 
   const validation = createPostSchema.safeParse({
     title: data.get("title"),
@@ -43,7 +45,7 @@ const createPost = async (
         val.content,
         0,
         0,
-        { author: session?.user?.email, id: session?.user?.id },
+        user.user_id,
         new Date(),
       ]);
       console.log("post", post);

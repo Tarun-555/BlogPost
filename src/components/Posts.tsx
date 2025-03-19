@@ -23,7 +23,7 @@ const fallBackImg =
   "https://media.gettyimages.com/id/2080972792/photo/ai-chatbot.jpg?s=1024x1024&w=gi&k=20&c=nDNcqBqzoC76ntaqN6zCG7Gq_ZW1oTs60z4Ytl2ldXM=";
 
 interface Post {
-  id: number;
+  post_id: number;
   title: string;
   description: string;
   content: string;
@@ -49,9 +49,9 @@ const Posts = ({ posts }: PostsProps) => {
       {posts?.length > 0 &&
         posts.map((post) => (
           <div
-            key={post.id}
+            key={post.post_id}
             className="post w-2xs h-[380px] sm:w-2xs md:w-2xs lg:w-2xs border-4 border-[#312f2f] rounded-[10px] shadow-[0px_4px_0px_1px_#312f2f] overflow-hidden hover:border-[#ff8736] hover:shadow-[0px_4px_0px_1px_#ff8736] cursor-pointer"
-            onClick={() => router.push(`/post/${post.id}`)}
+            onClick={() => router.push(`/post/${post.post_id}`)}
           >
             <div className="post-image w-full h-[200px]">
               <Image
@@ -79,7 +79,7 @@ const Posts = ({ posts }: PostsProps) => {
               </div>
               <button
                 className="w-[100px] bg-black text-white text-[12px] font-bold p-1 rounded-[5px] cursor-pointer hover:bg-amber-600"
-                onClick={() => router.push(`/post/${post.id}`)}
+                onClick={() => router.push(`/post/${post.post_id}`)}
               >
                 Read more
               </button>

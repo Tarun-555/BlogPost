@@ -1,13 +1,29 @@
-import { createUserQuery, getUserQuery } from "../queries/user";
+import {
+  createUserQuery,
+  getAuthorInfoQuery,
+  getUserQuery,
+} from "../queries/user";
 import { pool } from "./../db";
 
-const getUserInfo = async (email: string) => {
+const getUserInfoByEmail = async (email: string) => {
   try {
     const res = await pool.query(getUserQuery, [email]);
     // console.log("res", res.rows[0]);
     return res.rows[0];
   } catch (err) {
     console.log("error fetching user: ", err);
+  }
+};
+
+const getAuthorByPostId = async (postId: string) => {
+  console.log("post id: ", postId);
+
+  try {
+    const authorResponse = await pool.query(getAuthorInfoQuery, [postId]);
+    console.log("post id: ", postId, authorResponse);
+    return authorResponse.rows[0];
+  } catch (err) {
+    console.log("error fetching author: ", err);
   }
 };
 
@@ -28,4 +44,4 @@ const storeUserInfo = async (user: {
   }
 };
 
-export { getUserInfo, storeUserInfo };
+export { getUserInfoByEmail, storeUserInfo, getAuthorByPostId };
