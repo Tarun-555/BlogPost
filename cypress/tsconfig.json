@@ -1,0 +1,19 @@
+/*
+ created two seperate tsconfig files: one inside cypress folder and one a root level since jest and cypress having jest conflict issue which results in matchers not found issue in  jest tests. so created a root level tsconfig file to exclude cypress
+*/
+
+{
+    "compilerOptions": {
+      "target": "es5",
+      "lib": ["es5", "dom"],
+      "types": ["cypress"]
+    },
+    "include": [
+      "**/*.ts",
+      "cypress/**/*.ts",
+      "cypress.config.ts"
+    ],
+    "exclude": [
+      "node_modules"
+    ]
+}
