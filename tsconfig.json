@@ -23,6 +23,6 @@
     },
     "types": ["node", "jest", "@testing-library/jest-dom"]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "*test.ts", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "*.ts", "**/*.tsx", "*test.ts", ".next/types/**/*.ts", "node_modules/next-auth/index.js"],
   "exclude": ["node_modules", "cypress", "cypress.config.ts"]
 }
