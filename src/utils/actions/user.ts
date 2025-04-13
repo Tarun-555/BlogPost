@@ -1,3 +1,4 @@
+import { User } from "next-auth";
 import {
   createUserQuery,
   getAuthorInfoQuery,
@@ -27,11 +28,7 @@ const getAuthorByPostId = async (postId: string) => {
   }
 };
 
-const storeUserInfo = async (user: {
-  name: string;
-  email: string;
-  image: string;
-}) => {
+const storeUserInfo = async (user: User) => {
   try {
     const res = await pool.query(createUserQuery, [
       user.name,

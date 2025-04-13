@@ -5,12 +5,14 @@ import Link from "next/link";
 import { Profile } from "./Profile";
 import Button from "./Button";
 import { getUserInfoByEmail, storeUserInfo } from "@/utils/actions/user";
+import { Session, User } from "next-auth";
 
-const storeUserInfoInDB = async (user) => {
-  const userExists = await getUserInfoByEmail(user.email);
+const storeUserInfoInDB = async (session: Session) => {
+  const { user } = session;
+  const userExists = await getUserInfoByEmail(user?.email as string);
   // console.log("user Exists : ", userExists);
   if (!userExists) {
-    await storeUserInfo(user);
+    await storeUserInfo(user as User);
   }
 };
 
@@ -18,7 +20,7 @@ const Navbar = async () => {
   const session = await auth();
 
   if (session) {
-    storeUserInfoInDB(session?.user);
+    storeUserInfoInDB(session);
   }
 
   // console.log("user", session, session?.user?.id);
