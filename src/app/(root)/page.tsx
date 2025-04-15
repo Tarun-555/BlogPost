@@ -4,6 +4,7 @@ import { getAllPosts } from "@/utils/actions/post";
 import { Suspense } from "react";
 import Posts from "@/components/Posts";
 import "./../../utils/db";
+import FloatingBtn from "@/components/FloatingBtn";
 
 // const getServersideProps = async () => {
 //   const posts = await getAllPosts().then((res) => console.log("Query", res));
@@ -39,7 +40,7 @@ const Home = async ({
 
   return (
     <div>
-      <section className="banner">
+      <section className="banner" id="search-banner">
         <div className="custom-header">
           Inspire, connect, and encourage engagement with posts
         </div>
@@ -68,6 +69,7 @@ const Home = async ({
             <Posts posts={query ? searchedPosts : posts} />
           </Suspense>
         </ul>
+        <FloatingBtn />
       </section>
     </div>
   );

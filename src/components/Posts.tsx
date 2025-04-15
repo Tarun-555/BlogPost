@@ -37,7 +37,7 @@ interface Post {
 }
 
 interface PostsProps {
-  posts: Post[];
+  posts: Post[] | undefined;
 }
 
 const Posts = ({ posts }: PostsProps) => {
@@ -46,7 +46,8 @@ const Posts = ({ posts }: PostsProps) => {
   console.log("inside posts", posts);
   return (
     <div className="flex gap-10 flex-wrap justify-items-start px-[60px] mt-4">
-      {posts?.length > 0 &&
+      {posts &&
+        posts?.length > 0 &&
         posts.map((post) => (
           <div
             key={post.post_id}

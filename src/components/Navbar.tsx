@@ -27,7 +27,7 @@ const Navbar = async () => {
 
   return (
     <div
-      className="w-full h-20 bg-gray-800 text-white flex items-center justify-between px-5 py-1"
+      className="w-full h-20 bg-gray-800 text-white flex items-center justify-between px-5 py-1 fixed top-0 z-50 shadow-md"
       data-cy="navbar"
     >
       <Link href={"/"}>

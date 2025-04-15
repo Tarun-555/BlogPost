@@ -4,7 +4,7 @@ import { useFormStatus } from "react-dom";
 interface ButtonProps {
   onClick?: () => void;
   children: React.ReactNode;
-  cls: string;
+  cls?: string;
   dataCy?: string; // data-cy attribute for cypress tests
 }
 

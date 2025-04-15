@@ -41,7 +41,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${bebas_neue.variable} ${roboto.variable} antialiased`}
       >
         <Navbar />
-        {children}
+        <div className="mt-[80px] pb-20">{children}</div>
       </body>
     </html>
   );

@@ -21,20 +21,18 @@ export const Profile = ({ user }: ProfileProps) => {
 
   const handleProfileClick = () => {
     setModalOpen(!modalOpen);
-    console.log("Profile clicked", modalOpen);
+    // console.log("Profile clicked", modalOpen);
   };
 
   const handleClickOutside = (event: MouseEvent) => {
     if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
-      console.log("Setting modal open to false");
+      // console.log("Setting modal open to false");
       setModalOpen(false);
     }
   };
 
   useEffect(() => {
     if (modalOpen) {
-      console.log("in use");
-
       document.addEventListener("mousedown", handleClickOutside);
     }
 
@@ -70,21 +68,28 @@ export const Profile = ({ user }: ProfileProps) => {
               throw new Error("Function not implemented.");
             }}
           >
-            <div className="flex flex-col text-black items-center gap-2 text-lg font-medium">
-              <div className="flex items-center ">
-                <span className="mr-2">
-                  <Icon.User size={18} />
+            <div className="flex flex-col text-black gap-2 text-lg font-medium pl-2">
+              <Image
+                src={user?.image ? user.image : ""}
+                width={40}
+                height={40}
+                alt="Profile"
+                className="w-[90%] self-center h-[60px] object-contain"
+              />
+              <div className="flex items-center text-sm text-[#4a4848]">
+                <span className="mr-2 ">
+                  <Icon.User size={16} />
                 </span>
                 {user?.name}
               </div>
-              <div className="flex items-center text-sm">
+              <div className="flex items-center text-sm  text-[#4a4848]">
                 <span className="mr-2">
-                  <Icon.Mail size={15} />
+                  <Icon.Mail size={16} />
                 </span>
                 {user?.email}
               </div>
               <button
-                className="bg-blue-800 text-white px-2 py-1 w-[100] rounded-md mt-4 cursor-pointer hover:bg-blue-900"
+                className="bg-black text-white px-2 py-1 w-[94%] rounded-md mt-2.5 cursor-pointer hover:bg-black-200"
                 onClick={handleLogout}
               >
                 Logout
