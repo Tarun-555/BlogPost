@@ -1,4 +1,4 @@
-import { bebas_neue, roboto } from "@/app/layout";
+import { bebas_neue, roboto } from "@/utils/fontsInit";
 import MarkdownPreview from "@/components/MarkdownPreview";
 import { getPostById } from "@/utils/actions/post";
 import { getAuthorByPostId } from "@/utils/actions/user";
@@ -8,8 +8,12 @@ import Image from "next/image";
 const dummyAuthorImg =
   "https://imgs.search.brave.com/a77ewf5mkBES0JGG9_O7ZXD54dG6hNKUNIIZ56lozjc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTQ3/NjE3MDk2OS9waG90/by9wb3J0cmFpdC1v/Zi15b3VuZy1tYW4t/cmVhZHktZm9yLWpv/Yi1idXNpbmVzcy1j/b25jZXB0LmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz13OFNs/S3YtNHU2eFl5VTA3/Q1hlQlJ2Zlc2RjBp/WXgtYTdIUjJDaE04/WmJVPQ";
 
-const PostDetailPage = async ({ params }: { params: { postId: number } }) => {
-  const { postId } = params;
+const PostDetailPage = async ({
+  params,
+}: {
+  params: Promise<{ postId: number }>;
+}) => {
+  const { postId } = await params;
   const post = await getPostById(postId);
   const author = await getAuthorByPostId(post.created_by);
   console.log("data from id", post, postId, params, author);

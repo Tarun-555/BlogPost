@@ -8,6 +8,8 @@ import MdEditor from "@uiw/react-md-editor";
 export const PostForm = () => {
   const [content, setContent] = useState("");
   const bindContentToCreatePost = createPost.bind(null, { content });
+  //eslint-disable-next-line
+  // @ts-ignore
   const [state, formAction] = useActionState(bindContentToCreatePost, {
     errors: [],
     prevInputs: {

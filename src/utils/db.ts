@@ -1,7 +1,7 @@
 import { Pool } from "pg";
 import { PostTable, UserTable } from "./initDBScript";
 
-console.log("setting up DB config");
+console.log("setting up DB config", process.env.POSTGRES_URL);
 
 const pool = new Pool({
   connectionString: process.env.POSTGRES_URL,

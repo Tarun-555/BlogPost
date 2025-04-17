@@ -1,29 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Inter, Roboto, Bebas_Neue } from "next/font/google";
 import "./../globals.css";
 import Navbar from "@/components/Navbar";
-
-export const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-export const roboto = Roboto({
-  weight: ["300", "400", "500"],
-  subsets: ["latin"],
-  variable: "--font-roboto",
-});
-
-export const bebas_neue = Bebas_Neue({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-bebas_neue",
-});
+import { bebas_neue, geistSans, roboto } from "@/utils/fontsInit";
 
 export const metadata: Metadata = {
   title: "Next Posts App",

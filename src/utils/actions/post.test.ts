@@ -40,10 +40,10 @@ const mockGetUserInfo = getUserInfoByEmail as jest.MockedFunction<
 const mockCreatePost = createPost as jest.MockedFunction<typeof createPost>;
 
 describe("createPost", () => {
-  const mockFormData = (data: Record<string, string>) =>
-    ({
-      get: (key: string) => data[key] || null,
-    } as unknown as FormData);
+  // const mockFormData = (data: Record<string, string>) =>
+  //   ({
+  //     get: (key: string) => data[key] || null,
+  //   } as unknown as FormData);
 
   beforeEach(() => {
     jest.clearAllMocks();
