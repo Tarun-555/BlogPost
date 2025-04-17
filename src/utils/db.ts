@@ -1,10 +1,23 @@
 import { Pool } from "pg";
 import { PostTable, UserTable } from "./initDBScript";
 
-console.log("setting up DB config", process.env.POSTGRES_URL);
+console.log("setting up DB config");
 
+// const pool = new Pool({
+//   connectionString: process.env.POSTGRES_URL,
+//   ssl: {
+//     rejectUnauthorized: false,
+//   },
+// });
 const pool = new Pool({
-  connectionString: process.env.POSTGRES_URL,
+  port: process.env.POSTGRES_PORT ? parseInt(process.env.POSTGRES_PORT) : 5432,
+  user: process.env.POSTGRES_USER,
+  host: process.env.POSTGRES_HOST,
+  password: process.env.POSTGRES_PASS,
+  database: "defaultdb",
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
 pool

@@ -48,7 +48,7 @@ const createPost = async (
         user.user_id,
         new Date(),
       ]);
-      console.log("post", post);
+      console.log("post", post.rows);
     } else {
       const errors: { [key: string]: string }[] = [];
       validation?.error.issues.map((err) => {
