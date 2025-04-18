@@ -1,6 +1,6 @@
 // import { createPost } from "../../utils/actions/post";
 import { PostForm } from "@/components/PostForm";
-import { auth } from "../../../../auth";
+import { auth } from "../../../auth";
 import { redirect } from "next/navigation";
 
 const CreatePost = async () => {

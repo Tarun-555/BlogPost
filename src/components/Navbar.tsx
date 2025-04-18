@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { LogIn } from "../helpers/sign-in";
-import { auth } from "../../auth";
+import { auth } from "../auth";
 import Link from "next/link";
 import { Profile } from "./Profile";
 import Button from "./Button";

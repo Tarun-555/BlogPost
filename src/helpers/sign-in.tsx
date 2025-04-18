@@ -1,5 +1,5 @@
 import Button from "@/components/Button";
-import { signIn } from "../../auth";
+import { signIn } from "../auth";
 
 export const LogIn = async () => {
   const handleLogin = async () => {

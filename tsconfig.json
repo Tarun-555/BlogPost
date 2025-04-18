@@ -39,7 +39,7 @@
     "next-env.d.ts",
     "node_modules/next-auth/index.js",
     ".next/types/**/*.ts"
-  ],
+, "src/auth.ts"  ],
   "exclude": [
     ".next",
     "node_modules",

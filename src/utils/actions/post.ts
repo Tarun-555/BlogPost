@@ -7,7 +7,7 @@ import {
 import { pool } from "./../db";
 import { redirect } from "next/navigation";
 import { z, ZodIssue } from "zod";
-import { auth } from "../../../auth";
+import { auth } from "../../auth";
 import { getUserInfoByEmail } from "./user";
 
 const createPostSchema = z.object({
