@@ -14,10 +14,11 @@ const pool = new Pool({
   user: process.env.POSTGRES_USER,
   host: process.env.POSTGRES_HOST,
   password: process.env.POSTGRES_PASS,
-  database: "defaultdb",
-  ssl: {
-    rejectUnauthorized: false,
-  },
+  database: process.env.POSTGRES_DB,
+  // only for production ssl config
+  // ssl: {
+  //   rejectUnauthorized: false,
+  // },
 });
 
 pool
